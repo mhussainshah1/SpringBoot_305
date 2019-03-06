@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="base::header"></div>
+    <title>index</title>
+
+</head>
+
+<body>
+<div th:replace="base::nav"></div>
+
+<h1>Movie List</h1>
+<div th:each="actor : ${actors}">
+    <h2 th:text="${actor.name}"></h2>
+    <h6 th:inline="text">AKA [[${actor.realName}]]</h6>
+    <ul>
+        <th:block th:each="movie : ${actor.movies}">
+            <li th:inline="text">
+                <b>[[${movie.title}]]</b> released in [[${movie.year}]]
+            </li>
+        </th:block>
+    </ul>
+</div>
+<div th:replace="base::footer"></div>
+</body>
+</html>
